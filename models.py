@@ -16,4 +16,10 @@ class User(db.Model):
     email = db.Column(db.String, nullable=False, unique=True)
     role = db.Column(db.Text, nullable=False)
     password = db.Column(db.Text, nullable=False)
-    created_at = db.Column(db.TIMESTAMP)
+    created_at = db.Column(db.TIMESTAMP, server_default=db.func.now())
+    updated_at = db.Column(db.TIMESTAMP,anupdate=db.func.now)
+    #isDeleted = db.Column(db.Boolean, server_default=False)
+    #soft deleting 
+    #deleted_at = db.Column(db.TIMESTAMP)
+
+    #where deleted_at is null
