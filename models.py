@@ -24,3 +24,16 @@ class User(db.Model):
     #deleted_at = db.Column(db.TIMESTAMP)
 
     #where deleted_at is null
+
+    class LocationModel(db.Model):
+        id = db.Column(db.Integer, primary_key = True)
+        created_at = db.Column(db.TIMESTAMP, server_default=db.func.now())
+        updated_at = db.Column(db.TIMESTAMP, onupdate=db.func.now())
+
+    class PropertyModel(db.Model):
+        __tablename__ = 'properties'
+
+        id = db.Column(db.Integer, primary_key = True)
+        created_at = db.Column(db.TIMESTAMP, server_default=db.func.now())
+        updated_at = db.Column(db.TIMESTAMP,server_default=db.func.now(),onupdate=db.func.now())
+
