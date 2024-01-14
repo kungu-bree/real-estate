@@ -1,4 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import func 
 
 #initialize db/create a new instance
 db = SQLAlchemy()
@@ -17,7 +18,7 @@ class User(db.Model):
     role = db.Column(db.Text, nullable=False)
     password = db.Column(db.Text, nullable=False)
     created_at = db.Column(db.TIMESTAMP, server_default=db.func.now())
-    updated_at = db.Column(db.TIMESTAMP,anupdate=db.func.now)
+    updated_at = db.Column(db.TIMESTAMP,server_default=db.func.now(),onupdate=db.func.now())
     #isDeleted = db.Column(db.Boolean, server_default=False)
     #soft deleting 
     #deleted_at = db.Column(db.TIMESTAMP)
